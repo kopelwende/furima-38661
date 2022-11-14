@@ -23,8 +23,6 @@ Things you may want to cover:
 
 * ...
 
-
-
 # テーブル設計
 
 ## users テーブル
@@ -81,6 +79,4 @@ Things you may want to cover:
 | comment            | string     | null: false |
 | user               | references | null: false |
 | item               | references | null: false |
-
-
 
