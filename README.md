@@ -30,7 +30,8 @@ Things you may want to cover:
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
-| email              | string | null: false, /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i: true|
+| email              | string | null: false,|
+| password           | string | null: false, /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i: true|
 | encrypted_password | string | null: false, /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i: true|
 | last_name          | string | null: false, /\A[ぁ-んァ-ン一-龥]/: true |
 | first_name         | string | null: false, /\A[ぁ-んァ-ン一-龥]/: true |
@@ -63,8 +64,8 @@ Things you may want to cover:
 | Column             | Type       | Options     |
 | ------------------ | ---------- | ----------- |
 | post_code          | string     | null: false, /\A\d{3}[-]\d{4}\z/ |
-| Prefectures        | string     | null: false |
-| Municipality       | string     | null: false |
+| prefectures        | string     | null: false |
+| municipality       | string     | null: false |
 | address            | string     | null: false |
 | building           | string     |             |
 | phone_number       | string     | null: false, /\A[0-9]+\z/ |
