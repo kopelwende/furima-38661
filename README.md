@@ -31,7 +31,7 @@ Things you may want to cover:
 | --------------------- | ------ | ----------- |
 | nickname              | string | null: false |
 | email                 | string | null: false |
-| password              | string | null: false |
+| encrypted_password    | string | null: false |
 | password_confirmation | string | null: false |
 | last_name             | string | null: false |
 | first_name            | string | null: false |
@@ -47,18 +47,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column             | Type       | Options     |
-| ------------------ | -----------| ------------|
-| item_name          | string     | null: false |
-| explanation        | text       | null: false |
-| category           | integer    | null: false |
-| item_status        | integer    | null: false |
-| shipping_charges   | integer    | null: false |
-| region_of_origin   | integer    | null: false |
-| estimated_shipping | integer    | null: false |
-| price              | integer    | null: false |
-| user               | references | null: false |
-| order              | references | null: false |
+| Column                | Type       | Options     |
+| --------------------- | -----------| ------------|
+| item_name             | string     | null: false |
+| explanation           | text       | null: false |
+| category_id           | integer    | null: false |
+| item_status_id        | integer    | null: false |
+| shipping_charges_id   | integer    | null: false |
+| region_of_origin_id   | integer    | null: false |
+| estimated_shipping_id | integer    | null: false |
+| price                 | integer    | null: false |
+| user                  | references | null: false |
 
 ### Association
 - belongs_to :user 
@@ -93,4 +92,4 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :addresses
+- has_one :address
