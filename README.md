@@ -27,17 +27,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column                | Type   | Options     |
-| --------------------- | ------ | ----------- |
-| nickname              | string | null: false |
-| email                 | string | null: false |
-| encrypted_password    | string | null: false |
-| password_confirmation | string | null: false |
-| last_name             | string | null: false |
-| first_name            | string | null: false |
-| last_name_kana        | string | null: false |
-| first_name_kane       | string | null: false |
-| birth_day             | date   | null: false |
+| Column                | Type   | Options                   |
+| --------------------- | ------ | ------------------------- |
+| nickname              | string | null: false               |
+| email                 | string | null: false, unique: true |
+| encrypted_password    | string | null: false               |
+| last_name             | string | null: false               |
+| first_name            | string | null: false               |
+| last_name_kana        | string | null: false               |
+| first_name_kane       | string | null: false               |
+| birth_day             | date   | null: false               |
 
 ### Association
 - has_many :items
@@ -54,7 +53,7 @@ Things you may want to cover:
 | category_id           | integer    | null: false |
 | item_status_id        | integer    | null: false |
 | shipping_charges_id   | integer    | null: false |
-| region_of_origin_id   | integer    | null: false |
+| prefectures_id        | integer    | null: false |
 | estimated_shipping_id | integer    | null: false |
 | price                 | integer    | null: false |
 | user                  | references | null: false |
@@ -70,7 +69,7 @@ Things you may want to cover:
 | Column             | Type       | Options                      |
 | ------------------ | ---------- | ---------------------------- |
 | post_code          | string     | null: false                  |
-| prefectures        | integer    | null: false                  |
+| prefectures_id     | integer    | null: false                  |
 | municipality       | string     | null: false                  |
 | address            | string     | null: false                  |
 | building           | string     |                              |
