@@ -51,12 +51,12 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Password is invalid')
       end
       it 'passwordが半角英字のみだと登録できない' do
-        @user.password = "hankaku"
+        @user.password = 'hankaku'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is invalid')
       end
       it 'passwordが数字のみだと登録できない' do
-        @user.password ="84658364"
+        @user.password = '84658364'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is invalid')
       end
@@ -76,7 +76,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Last name is invalid')
       end
       it 'last_nameが数字だと登録できない' do
-        @user.last_name = "7657646"
+        @user.last_name = '7657646'
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name is invalid')
       end
@@ -91,7 +91,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('First name is invalid')
       end
       it 'first_nameが数字だと登録できない' do
-        @user.first_name = "896764"
+        @user.first_name = '896764'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name is invalid')
       end
@@ -106,7 +106,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Last name kana is invalid')
       end
       it 'last_name_kanaが数字だと登録できない' do
-        @user.last_name_kana = "9876543"
+        @user.last_name_kana = '9876543'
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name kana is invalid')
       end
@@ -126,7 +126,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('First name kana is invalid')
       end
       it 'first_name_kanaが数字だと登録できない' do
-        @user.first_name_kana = "74390765"
+        @user.first_name_kana = '74390765'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name kana is invalid')
       end
