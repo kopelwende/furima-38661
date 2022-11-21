@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   def index
+  
   end
 
   def new
@@ -21,4 +22,5 @@ class ItemsController < ApplicationController
 
   def item_params
     params.requier(:item).permit(:item_name,:explanation,:category_id,:item_status_id,:shipping_charges_id,:prefectures_id,:estimated_shipping_id,:image)
+  end
 end
