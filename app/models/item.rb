@@ -13,6 +13,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
+  validates :image,presence:true
 
   belongs_to :category
   belongs_to :item_status
