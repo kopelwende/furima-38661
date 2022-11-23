@@ -1,9 +1,6 @@
 function price (){
-  console.log("イベント発火");
   const origin = document.getElementById('item-price');
-  console.log(origin);
   origin.addEventListener("input",()=>{
-    console.log("イベント発火")
     var inputValue = origin.value;
     inputValue =parseInt(inputValue)
     console.log(inputValue);
