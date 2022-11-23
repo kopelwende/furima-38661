@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :go_to_index, only: :new
+  before_action :authenticate_user!, only: :new
 
   def index
   end
@@ -24,9 +24,4 @@ class ItemsController < ApplicationController
                                  :estimated_shipping_id, :price, :image).merge(user_id: current_user.id)
   end
 
-  def go_to_index
-    return if user_signed_in?
-
-    redirect_to new_user_session_path
-  end
 end
