@@ -3,7 +3,6 @@ function price (){
   origin.addEventListener("input",()=>{
     var inputValue = origin.value;
     inputValue =parseInt(inputValue)
-    console.log(inputValue);
 
     const addTaxDom = document.getElementById("add-tax-price");
     var tax= addTaxDom.innerHTML = Math.floor(inputValue  * 0.1);
