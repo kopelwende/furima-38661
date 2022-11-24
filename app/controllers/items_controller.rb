@@ -24,8 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if current_user.id == @item.user_id # &&売却済みではない
-    else
+    if current_user.id != @item.user_id # &&売却済みではない
       redirect_to root_path
     end
   end
