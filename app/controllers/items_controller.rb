@@ -19,11 +19,11 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    item_find
   end
 
   def edit
-    @item = Item.find(params[:id])
+    item_find
     if current_user.id == @item.user_id # &&売却済みではない
     else
       redirect_to root_path
@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
+    item_find
     if @item.update(item_params)
       redirect_to root_path
     else
@@ -44,5 +44,9 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:item_name, :explanation, :category_id, :item_status_id, :shipping_charges_id, :prefectures_id,
                                  :estimated_shipping_id, :price, :image).merge(user_id: current_user.id)
+  end
+
+  def item_find
+    @item = Item.find(params[:id])
   end
 end
