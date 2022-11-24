@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
+  before_action :item_find, only: [:show,:edit,:update]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -19,11 +20,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    item_find
+
   end
 
   def edit
-    item_find
     if current_user.id == @item.user_id # &&売却済みではない
     else
       redirect_to root_path
@@ -31,7 +31,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item_find
     if @item.update(item_params)
       redirect_to root_path
     else
