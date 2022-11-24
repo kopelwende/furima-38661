@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: :new
+  before_action :authenticate_user!, only: [:new,:edit]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -23,11 +23,16 @@ class ItemsController < ApplicationController
   end
 
   def edit
-   @item = Item.find(params[:id])
+        @item = Item.find(params[:id])
+    if current_user.id == @item.user_id #&&売却済みではない 
+    else
+        redirect_to root_path
+    end
   end
 
   def update
-    if Item.update(item_params)
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
       redirect_to root_path
     else
       render :edit
@@ -40,4 +45,5 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:item_name, :explanation, :category_id, :item_status_id, :shipping_charges_id, :prefectures_id,
                                  :estimated_shipping_id, :price, :image).merge(user_id: current_user.id)
   end
+
 end
