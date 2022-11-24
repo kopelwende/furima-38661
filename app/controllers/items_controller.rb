@@ -23,9 +23,15 @@ class ItemsController < ApplicationController
   end
 
   def edit
+   @item = Item.find(params[:id])
   end
 
   def update
+    if Item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   private
