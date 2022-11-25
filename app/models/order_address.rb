@@ -12,6 +12,7 @@ class OderAddress
   validates, :item, presence: true
 
   def save
-    # 各テーブルにデータを保存する処理を書く
+    Order.create(user: user_id, item: item_id)
+    Address.create(post_code: post_code,prefectures_id: prefectures_id, municipality: municipality, address: address, building: building, phone_number: phone_number, order: order)
   end
 end
