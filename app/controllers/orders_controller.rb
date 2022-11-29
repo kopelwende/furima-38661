@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController 
   before_action :authenticate_user!
   before_action :item_find
+  before_action :dont_self_buy
 
   def index
     @order_address = OrderAddress.new
@@ -27,6 +28,12 @@ class OrdersController < ApplicationController
 
   def item_find
     @item = Item.find(params[:item_id])
+  end
+
+  def dont_self_buy
+    if current_user.id == @item.user_id
+      redirect_to root_path
+    end
   end
 
   def pay_item
