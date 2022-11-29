@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
-  before_action :item_find, only: [:show,:edit,:update, :destroy]
+  before_action :item_find, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -59,12 +59,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def bought 
+  def bought
     @orders = Order.all
     @orders.each do |order|
-      if order.item_id == @item.id
-        @bought = 1
-      end
+      @bought = 1 if order.item_id == @item.id
     end
   end
 end
