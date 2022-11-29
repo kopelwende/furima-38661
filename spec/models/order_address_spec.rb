@@ -32,7 +32,7 @@ RSpec.describe OrderAddress, type: :model do
     it 'post_codeが空だと購入できない' do
       @order_address.post_code = ''
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Post code can't be blank", 'Post code is invalid')
+      expect(@order_address.errors.full_messages).to include('Post code is invalid')
     end
 
     it 'post_codeが英字だと購入できない' do
@@ -68,7 +68,7 @@ RSpec.describe OrderAddress, type: :model do
     it 'phone_numberが空だと購入できない' do
       @order_address.phone_number = ''
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Phone number can't be blank", 'Phone number is invalid')
+      expect(@order_address.errors.full_messages).to include('Phone number is invalid')
     end
 
     it 'phone_numberが英字だと購入できない' do
