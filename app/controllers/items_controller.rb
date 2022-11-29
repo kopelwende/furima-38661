@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order('created_at DESC')
+    @orders = Order.all
   end
 
   def new
@@ -20,10 +21,12 @@ class ItemsController < ApplicationController
   end
 
   def show
+    bought
   end
 
   def edit
-    return unless current_user.id != @item.user_id # &&売却済みではない
+    bought
+    return unless current_user.id != @item.user_id && @bought != 1
 
     redirect_to root_path
   end
@@ -54,5 +57,14 @@ class ItemsController < ApplicationController
 
   def item_find
     @item = Item.find(params[:id])
+  end
+
+  def bought 
+    @orders = Order.all
+    @orders.each do |order|
+      if order.item_id == @item.id
+        @bought = 1
+      end
+    end
   end
 end

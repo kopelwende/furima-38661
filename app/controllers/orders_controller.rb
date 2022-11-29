@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController 
   before_action :authenticate_user!
   before_action :item_find
+  before_action :bought
   before_action :dont_self_buy
 
   def index
@@ -28,6 +29,16 @@ class OrdersController < ApplicationController
 
   def item_find
     @item = Item.find(params[:item_id])
+  end
+
+  def bought
+    item_find
+    @orders = Order.all
+      @orders.each do |order|
+        if @item.id == order.item_id
+          redirect_to root_path
+        end
+      end 
   end
 
   def dont_self_buy
