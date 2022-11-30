@@ -15,7 +15,6 @@ class OrdersController < ApplicationController
       @order_address.save
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index
     end
   end
@@ -33,7 +32,6 @@ class OrdersController < ApplicationController
   end
 
   def bought
-    item_find
     @orders = Order.all
     @orders.each do |order|
       redirect_to root_path if @item.id == order.item_id
@@ -47,7 +45,7 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key =  ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: order_address_params[:token],
